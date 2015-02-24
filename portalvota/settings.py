@@ -17,7 +17,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = '8&*t$30s8la-zy4t$*n^zlw)tzth)y^(gb4_@css&y8)-hg+cb'
+=======
+SECRET_KEY = 'r&v-q$@y(6tot1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#zg'
+>>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'core',
+    'pessoas',
+
+>>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,7 +75,11 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
+<<<<<<< HEAD
 LANGUAGE_CODE = 'en-us'
+=======
+LANGUAGE_CODE = 'pt-br'
+>>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
 
 TIME_ZONE = 'UTC'
 
