@@ -9,26 +9,27 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from dj_database_url import parse as db_url
+from unipath import Path
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = Path(_file_).parent
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
-SECRET_KEY = '8&*t$30s8la-zy4t$*n^zlw)tzth)y^(gb4_@css&y8)-hg+cb'
-=======
+
 SECRET_KEY = 'r&v-q$@y(6tot1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#zg'
->>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -40,12 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
     'core',
     'pessoas',
-
->>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,20 +63,17 @@ WSGI_APPLICATION = 'portalvota.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': config(
+    	'DATABASE_URL',
+    	default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
+    	cast=db_url),
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-<<<<<<< HEAD
-LANGUAGE_CODE = 'en-us'
-=======
 LANGUAGE_CODE = 'pt-br'
->>>>>>> 58538a7a4c49ccd17961090fc5a71c460815bcce
+
 
 TIME_ZONE = 'UTC'
 
@@ -92,5 +86,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+STATIC_ROOT = 'staticfiles'
+
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static'),
+)
 
 STATIC_URL = '/static/'
