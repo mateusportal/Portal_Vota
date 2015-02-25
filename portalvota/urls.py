@@ -4,11 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'portalvota.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+	url(r'^valida_login/', 'pessoas.views.valida_login'),
     url(r'^$', 'core.views.index'),
-    url(r'^login/$', 'core.views.login'),
     url(r'^admin/', include(admin.site.urls)),
 )
