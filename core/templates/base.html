@@ -1,14 +1,24 @@
 {% load staticfiles %}
-<html>
-	<head>
-		<title>{% block titulo %}{% endblock %}</title>		
-		<link rel="stylesheet" href="/static/css/estilo.css">
-		<script language="javascript" src="/static/js/jquery.min.js"></script>	
-		<script type="text/javascript" src="/static/js/jquery.poptrox.min.js"></script>	
-		<script type="text/javascript" src="/static/js/init.js"></script>
-		<script type="text/javascript" src="/static/js/skel.min.js"></script>		
-	</head>
-	<body>
-		{% block container %}  {% endblock %} 
-	</body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>{% block titulo %}{% endblock %}</title>
+    <meta charset="utf-8"> 
+    <script language="javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.poptrox.min.js"></script>	
+	<script type="text/javascript" src="/static/js/init.js"></script>
+	<script type="text/javascript" src="/static/js/skel.min.js"></script> 
+	    
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/skel.css">
+	<link rel="stylesheet" href="/static/css/style.css">	
+	<link rel="stylesheet" href="/static/css/style-xlarge.css">		
+	{% block css %}{% endblock %}
+    <meta name="viewport" content="width=divice-width, initial-scale=1.0">
+</head>
+<body id="top">
+{% block container %}{% endblock %} 
+
+{% block js %}{% endblock %}
+</body>
 </html>

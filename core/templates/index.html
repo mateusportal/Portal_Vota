@@ -1,24 +1,26 @@
-{% extends "base.html" %} 
-{% block titulo %} Meu Index {% endblock %}
+{% extends "base.html" %}
+{% block titulo %} Portal Vota - Login {% endblock %}
 
 {% block container %}
-<header >
-	<h5>Portal de Ideias</h5>
+<header id="header">
+	<a href="#" class="image avatar"><img src="/static/images/avatar.jpg" alt="" /></a>
+	<h1><strong>Portal Vota</strong>, a forma simples<br />
+	de escolher o funcionário do mês.</h1> 
 </header>
-<div class="clear"></div>
-<div class="esquerda">
-	<h1>Portal Vota</h1>
-	<p>Entre, participe da votação e ganhe prêmios!</p>
-</div> 
-<div class="clear"></div>
-<div class="tumbi">
-	<img src="/static/img/1.png">
-</div>
+<div id="main">
+<!-- One -->
+	<section id="one">
+		<header class="major">
+			<h2>Entre, participe da votação e ganhe prêmios!</h2>
+		</header>
+		<form method="POST" action="/valida_login/">	
+			<input type="email" name="email" placeholder="E-mail portal" id="email"><br />
+			<input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf"><br />
+			<input type="submit" value="Login">
+		</form>	
 
-<form method="post" action="#" class="form">	
-	<input type="text" name="email" placeholder="E-mail portal"><br />
-	<input type="password" name="cpf" placeholder="Digite seu Cpf"><br />
-	<input type="submit" value="Login" class="button-primary">
-</form>	
+		<div align="center">v{{ versao }}</div>		
+	</section>	
+</div>
 {% endblock %} 
 
