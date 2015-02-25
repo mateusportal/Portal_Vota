@@ -1,1 +1,1 @@
-Neste diretório é colocado os arquivos CSS, JS e IMG do sistema.
+Neste diretório é colocado os arquivos CSS, JS e IMG do sistema!
