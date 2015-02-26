@@ -11,5 +11,6 @@ def votacao(request):
 def obrigado(request):
     return render(request,'obrigado.html')
 
-def teste(request):
-    return render(request,'teste.html')
+def vencedores(request):
+    return render(request,'vencedores.html')
+
