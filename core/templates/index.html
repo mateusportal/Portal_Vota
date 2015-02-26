@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -18,3 +19,24 @@
 
 versao{{ versao }}
 teste
+=======
+{% extends "base.html" %}
+{% block titulo %} Portal Vota - Login {% endblock %}
+
+{% block container %}
+<div id="main">
+<!-- One -->
+	<section id="one">
+		<header class="major">
+			<h2>Entre, participe da votação e ganhe prêmios!</h2>
+		</header>
+		<form method="POST" action="/valida_login/">	
+			<input type="email" name="email" placeholder="E-mail portal" id="email"><br />
+			<input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf"><br />
+			<input type="submit" value="Login">
+		</form>	
+		<div align="center">v{{ versao }}</div>		
+	</section>		
+</div>
+{% endblock %}
+>>>>>>> b787352f8daf664c3824d92f48cc5fcc33d6dfc2

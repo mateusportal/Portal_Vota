@@ -6,10 +6,12 @@ def index(request):
     versao = '0.1'
     return render(request,'index.html',{'versao':versao})
 
-def login(request):
+def votacao(request):
+    return render(request,'votacao.html')
 
-    email = request.POST.get('email','SEM EMAIL')
+def obrigado(request):
+    return render(request,'obrigado.html')
 
-    print email
-    #pessoa = Pessoa.objects.get(email=, cpf=)
-    return render(request,'votacao.html',{'nome':email})
+def vencedores(request):
+    return render(request,'vencedores.html')
+
