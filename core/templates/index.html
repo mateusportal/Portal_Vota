@@ -1,18 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %} Portal Vota - Login {% endblock %}
 
-
-
-
-<form action="/login/" method="POST">
-{% csrf_token %}
-
-<input type="email" name="email" value="" placeholder="nome@portaldeideias.com.br" required>
-
-<input type="password" name="cpf" value="" placeholder="000.000.000-00" required>
-
-<input type="submit" value="Login">
-
-</form>
-
-
-
-versao{{ versao }}
+{% block container %}
+<div id="main">
+<!-- One -->
+	<section id="one">
+		<header class="major">
+			<h2>Entre, participe da votação e ganhe prêmios!</h2>
+		</header>
+		<form method="POST" action="/valida_login/">	
+			<input type="email" name="email" placeholder="E-mail portal" id="email"><br />
+			<input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf"><br />
+			<input type="submit" value="Login">
+		</form>	
+		<div align="center">v{{ versao }}</div>		
+	</section>		
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block titulo %} Meu Index {% endblock %}
+
+{% block container %}
+<header >
+	<h5>Portal de Ideias</h5>
+</header>
+<div class="clear"></div>
+<div class="esquerda">
+	<h1>Portal Vota</h1>
+	<p>Entre, participe da votação e ganhe prêmios!</p>
+</div> 
+<div class="clear"></div>
+<div class="tumbi">
+	<img src="/static/img/1.png">
+</div>
+
+<form method="post" action="#" class="form">	
+	<input type="text" name="email" placeholder="E-mail portal"><br />
+	<input type="password" name="cpf" placeholder="Digite seu Cpf"><br />
+	<input type="submit" value="Login" class="button-primary">
+</form>	
+{% endblock %} 
+
+<link rel="stylesheet" href="/static/css/estilo.css">
+
+
+	<script language="javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.poptrox.min.js"></script>	
+	<script type="text/javascript" src="/static/js/init.js"></script>
+	<script type="text/javascript" src="/static/js/skel.min.js"></script> 
