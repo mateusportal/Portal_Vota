@@ -1,3 +1,5 @@
 from django.contrib import admin
+from pessoas.models import Pessoa, Voto
 
-# Register your models here.
+admin.site.register(Pessoa)
+admin.site.register(Voto)
