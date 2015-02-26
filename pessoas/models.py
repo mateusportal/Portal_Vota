@@ -1,6 +1,7 @@
 from django.db import models
 
 class Pessoa(models.Model):
+    id = models.AutoField(primary_key=True)
     foto = models.CharField(default='semfoto.png', max_length=100, blank=True, null=True)
     nome = models.CharField(max_length=100, blank=True, null=False)
     email = models.CharField(db_index=True, max_length=100, blank=True, null=True)
@@ -18,6 +19,7 @@ class Pessoa(models.Model):
         return self.nome+' - '+self.email
 
 class Voto(models.Model):
+    id = models.AutoField(primary_key=True)
     remetente = models.ForeignKey(Pessoa, related_name="remetente")
     destinatario = models.ForeignKey(Pessoa, related_name="destinatario")
     data_cadastro = models.DateTimeField(auto_now=False, auto_now_add=True)
