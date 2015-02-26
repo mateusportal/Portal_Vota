@@ -26,6 +26,7 @@ def valida_login(request):
 
 def votacao(request):
     if request.session.get('email', False):
+        
         pessoas = Pessoa.objects.filter(ativo='SIM')
         for pessoa in pessoas:
             print pessoa.nome
