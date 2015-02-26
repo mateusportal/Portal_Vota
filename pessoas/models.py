@@ -12,6 +12,7 @@ class Pessoa(models.Model):
 
 
     def __init__(self):
+        super(HandField, self).__init__(*args, **kwargs)
         self.foto = 'semfoto.png'
         self.ativo = 'SIM'
 
