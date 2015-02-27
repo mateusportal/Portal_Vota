@@ -22,7 +22,7 @@
 		<h1><strong>Portal Vota</strong><br />
 		Sistema para votar no funcionário do mês.</h1> 
 	</header>
-{% block container %}{% endblock %} 
+	{% block container %}{% endblock %} 
 	<!-- Footer -->
 	<footer id="footer">
 		<ul class="icons">
@@ -35,6 +35,13 @@
 			<li>&copy; 2015</li><li>Design: <a href="http://www.portaldeideias.com.br">Portal de Ideias</a></li>
 		</ul>
 	</footer>
-{% block js %}{% endblock %}
+	{% block js %}{% endblock %}
+
+	{% if msg %} <!-- MELHORAR A FORMA DE MSG -->
+	<script>
+    	alert("AVISO: {{ msg }}");
+  	</script>
+	{% endif %}
+
 </body>
 </html>
