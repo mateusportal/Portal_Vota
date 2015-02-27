@@ -6,36 +6,13 @@
 	<section id="two">
 		<h2>Escolha o funcionário do mês.</h2>
 		<div class="row">
+		{% for pessoa in pessoas %}
 			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/01.png" class="image fit thumb"><img src="/static/images/thumbs/01.jpg" alt="" /></a>
-				<h3>Fulano de Tal</h3>
-				<p>Help Desk.</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/02.jpg" class="image fit thumb"><img src="/static/images/thumbs/02.jpg" alt="" /></a>
-				<h3>Beltrano Souza</h3>
-				<p>Centro de Programação.</p>
-			</article>
-			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/03.jpg" class="image fit thumb"><img src="/static/images/thumbs/03.jpg" alt="" /></a>
-				<h3>Tor Commodo</h3>
-				<p>Help Desk.</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/04.jpg" class="image fit thumb"><img src="/static/images/thumbs/04.jpg" alt="" /></a>
-				<h3>Siclano Ciclo</h3>
-				<p>Setor Financeiro.</p>
-			</article>
-			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/05.jpg" class="image fit thumb"><img src="/static/images/thumbs/05.jpg" alt="" /></a>
-				<h3>Nelson Piquet</h3>
-				<p>Piloto.</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/06.jpg" class="image fit thumb"><img src="/static/images/thumbs/06.jpg" alt="" /></a>
-				<h3>Rismus Asmos</h3>
-				<p>Feiticeiro do Mal.</p>
-			</article>
+				<a href={{pessoa.foto}} class="image fit thumb"><img src={{pessoa.foto}} alt="" /></a>
+				<h3>{{ pessoa.nome }}</h3>
+				<p>{{ pessoa.area }}</p>
+		    </article>
+		{% endfor %} 
 		</div>
 		<ul class="actions">
 			<li><a href="#" class="button">Votar</a></li>
