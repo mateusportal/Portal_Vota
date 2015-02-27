@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.shortcuts import render, HttpResponseRedirect
+from django.db.models import Q
 from pessoas.models import Pessoa, Voto
 
 def valida_login(request):
@@ -26,12 +27,27 @@ def valida_login(request):
 
 def votacao(request):
     if request.session.get('id', False):
-        pessoas = Pessoa.objects.filter(ativo='SIM')
+        pessoas = Pessoa.objects.filter(ativo='SIM').exclude(pk=request.session.get('id')).order_by('nome')
         return render(request,'votacao.html',{'pessoas':pessoas})
     else:
         request.session.flush()
-        HttpResponseRedirect('/')   
+        HttpResponseRedirect('/')     
 
+def votar(request, codigo):
+    try:
+        votos = Voto.objects.get(remetente=codigo)
+        voto.destinatario = codigo
+        votos.save()
+    except:
+        votos = Voto(destinatario=codigo, remetente=request.session.get['id'])
+        votos.save()
+
+    request.session.flush()
+    return HttpResponseRedirect('/obrigado/')
+
+       
+    
+>>>>>>> ef84bbb1bf17f72456ae6940205c4297e53fe8e8
  
 
 

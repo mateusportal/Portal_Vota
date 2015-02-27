@@ -8,7 +8,7 @@
 		<div class="row">
 		{% for pessoa in pessoas %}
 			<article class="6u 12u$(3) work-item">
-				<a href={{pessoa.foto}} class="image fit thumb"><img src={{pessoa.foto}} alt="" /></a>
+				<a href="/voto/{{pessoa.pk}}" class="image fit thumb"><img src="{{pessoa.foto}}" alt="Vote em {{ pessoa.nome }}" text="Vote em {{ pessoa.nome }}" /></a>
 				<h3>{{ pessoa.nome }}</h3>
 				<p>{{ pessoa.area }}</p>
 		    </article>
