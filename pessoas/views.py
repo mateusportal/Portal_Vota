@@ -37,6 +37,18 @@ def votacao(request):
     #    HttpResponseRedirect('/')   
 
 def votar(request, codigo):
+    try:
+        votos = Voto.objects.get(remetente=codigo)
+        voto.destinatario = codigo
+        votos.save()
+    except:
+        votos = Voto(destinatario=codigo, remetente=request.session.get['id'])
+        votos.save()
+
+    request.session.flush()
+    return HttpResponseRedirect('/obrigado/')
+
+       
     
  
 
