@@ -3,10 +3,10 @@ from django.shortcuts import render, HttpResponseRedirect
 from pessoas.models import Pessoa, Voto
 
 def valida_login(request):
+    request.session.flush()
     if request.method == 'POST':
         email = request.POST.get('email', '').upper()
         cpf = request.POST.get('cpf', '').upper()
-        request.session.flush()
 
         if (len(email.strip()) > 0) and (len(cpf.strip()) > 0):
             try:
@@ -15,29 +15,23 @@ def valida_login(request):
                 if pessoa:
                     request.session['email'] = email
                     request.session['cpf'] = cpf
+                    request.session['id'] = pessoa.pk
                     return HttpResponseRedirect('/votacao/')
                 else:
-                    render(request,'index.html',{'msg':'Não foi encontrado o usuário no sistema. Tente novamente.','email':email,'cpf':cpf})  
-                    return HttpResponseRedirect('/')
+                    return render(request,'index.html',{'msg':'Não foi encontrado o usuário no sistema. Tente novamente.','email':email,'cpf':cpf})  
             except:
                 return render(request,'index.html',{'msg':'Erro ao consultar colaborador! Revise as informações e tente novamente.','email':email,'cpf':cpf})  
-
-
+    
+    return HttpResponseRedirect('/')   
 
 def votacao(request):
-   # if request.session.get('email', False):
+    if request.session.get('id', False):
+        pessoas = Pessoa.objects.filter(ativo='SIM')
+        return render(request,'votacao.html',{'pessoas':pessoas})
+    else:
+        request.session.flush()
+        HttpResponseRedirect('/')   
 
-    pessoas = Pessoa.objects.filter(ativo='SIM')
-    for pessoa in pessoas:
-        print pessoa.nome 
-
-    return render(request,'votacao.html',{'pessoas':pessoas})
-    #else:
-    #    request.session.flush()
-    #    HttpResponseRedirect('/')   
-
-def votar(request, codigo):
-    
  
 
 
