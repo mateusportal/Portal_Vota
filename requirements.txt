@@ -2,6 +2,12 @@ dj-database-url==0.3.0
 dj-static==0.0.6
 Django==1.6
 gunicorn==19.2.1
+<<<<<<< HEAD
 static3==0.5.1
 Unipath==1.1
 psycopg2==2.5.1
+=======
+psycopg2==2.5.1
+static3==0.5.1
+Unipath==1.1
+>>>>>>> 4f11b462b294fcea004fd8f81947179fb06e2cfd

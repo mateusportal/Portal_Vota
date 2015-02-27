@@ -25,14 +25,16 @@ def valida_login(request):
 
 
 def votacao(request):
-    if request.session.get('email', False):
-        #Abrir página com a listagem dos usuários para a votacao.
-        pessoas = Pessoa.objectes.filter(ativo='SIM').order('nome')
+   # if request.session.get('email', False):
 
-        HttpResponseRedirect('')
-    else:
-        request.session.flush()
-        HttpResponseRedirect('/')   
+    pessoas = Pessoa.objects.filter(ativo='SIM')
+    for pessoa in pessoas:
+        print pessoa.nome 
+
+    return render(request,'votacao.html',{'pessoas':pessoas})
+    #else:
+    #    request.session.flush()
+    #    HttpResponseRedirect('/')   
  
 
 

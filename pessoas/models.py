@@ -11,7 +11,7 @@ class Pessoa(models.Model):
     data_cadastro = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self,*args, **kwargs):
         super(Pessoa, self).__init__(*args, **kwargs)
         self.foto = 'semfoto.png'
         self.ativo = 'SIM'
