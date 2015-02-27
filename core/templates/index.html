@@ -11,8 +11,8 @@
 		</header>
 		<form method="POST" action="/valida_login/">	
 			{% csrf_token %} 
-			<input type="email" name="email" placeholder="E-mail portal" id="email"><br />
-			<input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf"><br />
+			<input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}"><br />
+			<input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}"><br />
 			<input type="submit" value="Login">
 		</form>	
 		<div align="center">v{{ versao }}</div>		
