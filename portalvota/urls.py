@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'^votacao/$', 'pessoas.views.votacao'),
     url(r'^obrigado/$', 'core.views.obrigado'),
     url(r'^vencedores/$', 'core.views.vencedores'),
-    url(r'^valida_login/', 'pessoas.views.valida_login'),
+    url(r'^valida_login/$', 'pessoas.views.valida_login'),
+    url(r'^voto/(?P<codigo>)$', 'pessoas.views.votar'),
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -54,6 +54,9 @@ WSGI_APPLICATION = 'portalvota.wsgi.application'
 # Para ligar o servidor Heroku local executar o comando abaixo:
 # foreman start
 
+# Adicionando variavel de ambiente no Heroku para funcionar o PRODUCTION in os.environ
+# Rodar no CMD: heroku config:add PRODUCTION=1
+
 
 if 'PRODUCTION' in os.environ:
     DATABASES = { 'default': dj_database_url.config() }
