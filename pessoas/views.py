@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.shortcuts import render, HttpResponseRedirect
 from pessoas.models import Pessoa, Voto
+from datetime import date
 
 def valida_login(request):
     if request.method == 'POST':
@@ -37,8 +38,11 @@ def votacao(request):
     #    HttpResponseRedirect('/')   
 
 def votar(request, codigo):
+    data = date.today()
+
+
     try:
-        votos = Voto.objects.get(remetente=codigo)
+        votos = Voto.objects.get(remetente=codigo,data_cadastro__month = data.month)
         voto.destinatario = codigo
         votos.save()
     except:
