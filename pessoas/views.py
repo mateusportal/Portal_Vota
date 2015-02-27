@@ -51,8 +51,7 @@ def votar(request, codigo):
 
        
     
->>>>>>> ef84bbb1bf17f72456ae6940205c4297e53fe8e8
- 
+
 
 
 
