@@ -18,9 +18,16 @@
 </head>
 <body id="top">
 	<header id="header">
+	{% if request.session.id %}
+		<a href="#" class="image avatar"><img src="/static/images/{{ request.session.foto }}" alt="Olá {{ request.session.name }}!" /></a>
+		<h1><strong>Olá {{ request.session.name }}!</strong><br />
+		{{ request.session.area }}
+		</h1> 
+	{% else %} 
 		<a href="#" class="image avatar"><img src="/static/images/avatar.jpg" alt="" /></a>
 		<h1><strong>Portal Vota</strong><br />
 		Sistema para votar no funcionário do mês.</h1> 
+	{% endif %}
 	</header>
 	{% block container %}{% endblock %} 
 	<!-- Footer -->
