@@ -34,7 +34,7 @@ def votacao(request):
         return render(request,'votacao.html',{'pessoas':pessoas})
     else:
         request.session.flush()
-        HttpResponseRedirect('/')     
+        return HttpResponseRedirect('/')     
 
 def votar(request, codigo):
     try:

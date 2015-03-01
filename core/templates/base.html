@@ -19,8 +19,8 @@
 <body id="top">
 	<header id="header">
 	{% if request.session.id %}
-		<a href="#" class="image avatar"><img src="/static/images/{{ request.session.foto }}" alt="Olá {{ request.session.name }}!" /></a>
-		<h1><strong>Olá {{ request.session.name }}!</strong><br />
+		<img class="image avatar" src="/static/images/{{ request.session.foto }}" alt="Olá {{ request.session.nome }}!" />
+		<h1><strong>Olá {{ request.session.nome }}!</strong><br />
 		{{ request.session.area }}
 		</h1> 
 	{% else %} 
