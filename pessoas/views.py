@@ -39,14 +39,18 @@ def votacao(request):
 
 def votar(request, codigo):
     data = date.today()
-
+    remetente = Pessoa.objects.get(id=request.session['id'])
+    destinatario = Pessoa.objects.get(id=codigo)
+    print data.month
 
     try:
-        votos = Voto.objects.get(remetente=codigo,data_cadastro__month = data.month)
-        voto.destinatario = codigo
+        #necessário instalar pytz para usar __month "pip install pytz"
+        votos = Voto.objects.get(remetente=request.session['id'],data_cadastro__month = data.month) 
+        #
+        votos.destinatario = destinatario
         votos.save()
     except:
-        votos = Voto(destinatario=codigo, remetente=request.session.get['id'])
+        votos = Voto(destinatario=destinatario, remetente=remetente)
         votos.save()
 
     request.session.flush()
