@@ -41,7 +41,6 @@ def votar(request, codigo):
     data = date.today()
     remetente = Pessoa.objects.get(id=request.session['id'])
     destinatario = Pessoa.objects.get(id=codigo)
-    print data.month
 
     try:
         #necessário instalar pytz para usar __month "pip install pytz"
