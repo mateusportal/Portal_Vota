@@ -3,15 +3,18 @@ from django.shortcuts import render
 from pessoas.models import Pessoa, Voto
 
 def index(request):
-    versao = '0.1'
-    return render(request,'index.html',{'versao':versao})
-
-def votacao(request):
-    return render(request,'votacao.html')
+    request.session.flush()
+    return render(request,'index.html')
 
 def obrigado(request):
+    request.session.flush()
     return render(request,'obrigado.html')
 
 def vencedores(request):
+    #request.session.flush()
+    #votos = Voto()
+
+    #print votos.campeoes()
+
     return render(request,'vencedores.html')
 

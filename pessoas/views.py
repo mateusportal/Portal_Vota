@@ -17,6 +17,9 @@ def valida_login(request):
                 if pessoa:
                     request.session['email'] = email
                     request.session['cpf'] = cpf
+                    request.session['foto'] = pessoa.foto
+                    request.session['nome'] = pessoa.nome
+                    request.session['area'] = pessoa.area
                     request.session['id'] = pessoa.pk
                     return HttpResponseRedirect('/votacao/')
                 else:
@@ -32,7 +35,7 @@ def votacao(request):
         return render(request,'votacao.html',{'pessoas':pessoas})
     else:
         request.session.flush()
-        HttpResponseRedirect('/')     
+        return HttpResponseRedirect('/')     
 
 def votar(request, codigo):
     data = date.today()
@@ -48,10 +51,6 @@ def votar(request, codigo):
 
     request.session.flush()
     return HttpResponseRedirect('/obrigado/')
-
-       
-    
-
 
 
 
