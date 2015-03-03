@@ -12,7 +12,7 @@ class Pessoa(models.Model):
 
     def __init__(self,*args, **kwargs):
         super(Pessoa, self).__init__(*args, **kwargs)
-        self.foto = 'semfoto.png'
+        #self.foto = 'semfoto.png'
         self.ativo = 'SIM'
 
     def __unicode__(self):

@@ -2,6 +2,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.db.models import Q
 from pessoas.models import Pessoa, Voto
+from datetime import date
 
 def valida_login(request):
     request.session.flush()
@@ -37,19 +38,28 @@ def votacao(request):
         return HttpResponseRedirect('/')     
 
 def votar(request, codigo):
-    try:
-        votos = Voto.objects.get(remetente=codigo)
-        voto.destinatario = codigo
-        votos.save()
-    except:
-        votos = Voto(destinatario=codigo, remetente=request.session.get['id'])
-        votos.save()
+    validacao = True
 
-    request.session.flush()
-    return HttpResponseRedirect('/obrigado/')
- 
+    if not codigo:
+        validacao = False
+    elif not codigo.isdigit():
+        validacao = False
+    elif codigo <= 0:
+        validacao = False
 
+    if validacao:
+        data = date.today()
 
+        try:
+            votos = Voto.objects.get(remetente_id=request.session['id'], data_cadastro__month=data.month) 
+            votos.destinatario_id = codigo
+            votos.save()
+        except:
+            votos = Voto(remetente_id=request.session['id'], destinatario_id=codigo)
+            votos.save()
 
-
-
+        request.session.flush()
+        return HttpResponseRedirect('/obrigado/')
+    else:
+        request.session.flush()
+        return HttpResponseRedirect('/')
