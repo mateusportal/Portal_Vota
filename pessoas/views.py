@@ -38,24 +38,28 @@ def votacao(request):
         return HttpResponseRedirect('/')     
 
 def votar(request, codigo):
-    data = date.today()
-    remetente = Pessoa.objects.get(id=request.session['id'])
-    destinatario = Pessoa.objects.get(id=codigo)
+    validacao = True
 
-    try:
-        #necessário instalar pytz para usar __month "pip install pytz"
-        votos = Voto.objects.get(remetente=request.session['id'],data_cadastro__month = data.month) 
-        #
-        votos.destinatario = destinatario
-        votos.save()
-    except:
-        votos = Voto(destinatario=destinatario, remetente=remetente)
-        votos.save()
+    if not codigo:
+        validacao = False
+    elif not codigo.isdigit():
+        validacao = False
+    elif codigo <= 0:
+        validacao = False
 
-    request.session.flush()
-    return HttpResponseRedirect('/obrigado/')
+    if validacao:
+        data = date.today()
 
+        try:
+            votos = Voto.objects.get(remetente_id=request.session['id'], data_cadastro__month=data.month) 
+            votos.destinatario_id = codigo
+            votos.save()
+        except:
+            votos = Voto(remetente_id=request.session['id'], destinatario_id=codigo)
+            votos.save()
 
-
-
-
+        request.session.flush()
+        return HttpResponseRedirect('/obrigado/')
+    else:
+        request.session.flush()
+        return HttpResponseRedirect('/')
