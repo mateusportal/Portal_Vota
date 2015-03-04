@@ -18,16 +18,15 @@ def vencedores(request):
     request.session.flush()
 
     datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
-    listaVotos = {}
+    winners = []
     for dt in datas:
-        votos = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year).values('destinatario_id').annotate(dcount=Count('id')).order_by('-dcount')[:1]
+        voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
+                    .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
+                    .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
 
-        listaVotos = itertools.chain(listaVotos,votos.destinatario_id)
+        winners.append(voto[0])
 
-    print list(listaVotos)
+    print list(winners)
 
-    #tenho que retornar algo assim para o template para mostrar e listar os ganhadores por ano e mes, e claro, a foto com o nome
-    listagem = [{'ano': 2015, 'mes': 3, 'nome': 'edson', 'foto': 'leo.jpg'}, {'ano': 2014, 'mes': 2, 'nome': 'Leo', 'foto': 'claudio.jpg'}]
-
-    return render(request,'vencedores.html',{'listagem':listagem})
+    return render(request,'vencedores.html',{'winners':winners})
 
