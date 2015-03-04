@@ -19,9 +19,9 @@ def vencedores(request):
 
     datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
     listaVotos = {}
-    for dt in datas:
-        votos = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year).values('destinatario_id').annotate(dcount=Count('id')).order_by('-dcount')[:1]
-        listaVotos = itertools.chain(listaVotos,votos)
+    #for dt in datas:
+        #votos = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year).values('destinatario_id').annotate(dcount=Count('id')).order_by('-dcount')[:1]
+        #listaVotos = itertools.chain(listaVotos,votos,['1':2])
 
     print list(listaVotos)
 
