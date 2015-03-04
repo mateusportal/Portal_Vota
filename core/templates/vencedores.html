@@ -6,11 +6,11 @@
     <section id="two">
         <h2>Vencedores!</h2>
         <div class="row">
-        {% for voto in votos %}
+        {% for ano, mes, nome, foto in listagem.items %}
             <article class="6u 12u$(3) work-item">
-                <a href="/voto/{{voto.pk}}" class="image fit thumb"><img src="/static/images/{{voto.destinatario.foto}}" alt="Vote em {{ voto.destinatario.nome }}" text="Vote em {{ voto.destinatario.nome }}" /></a>
-                <h3>{{ voto.destinatario.nome }}</h3>
-                <p>{{ voto.destinatario.area }}</p>
+                <a href="/voto/{{ foto }}" class="image fit thumb"><img src="/static/images/{{ foto }}" /></a>
+                <h3>{{ nome }}</h3>
+                <p>{{ mes }}</p>
             </article>
         {% endfor %} 
         </div>
