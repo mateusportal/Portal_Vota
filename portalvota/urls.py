@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^valida_login/$', 'pessoas.views.valida_login'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^voto/(?P<codigo>\d+)/$','pessoas.views.votar'),
+    url(r'^premios/$', 'core.views.premios'),
 )

@@ -27,3 +27,6 @@ def vencedores(request):
 
     return render(request,'vencedores.html',{'votos':listaVotos})
 
+def premios(request):
+    return render(request,'premios.html')
+
