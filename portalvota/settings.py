@@ -2,6 +2,7 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from dj_database_url import parse as db_url
 from unipath import Path
+from settings_conf import *
 import os
 import dj_database_url
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -11,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'r&v-q$@y(6tot1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#zg'
+SECRET_KEY = CHAVE
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

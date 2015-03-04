@@ -18,14 +18,17 @@ def vencedores(request):
     request.session.flush()
 
     datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
-    listaVotos = {}
+    winners = []
     for dt in datas:
-        votos = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year).values('destinatario_id').annotate(dcount=Count('id')).order_by('-dcount')[:1]
-        listaVotos = itertools.chain(listaVotos,votos)
+        voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
+                    .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
+                    .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
 
-    print list(listaVotos)
+        winners.append(voto[0])
 
-    return render(request,'vencedores.html',{'votos':listaVotos})
+    print list(winners)
+
+    return render(request,'vencedores.html',{'winners':winners})
 
 def premios(request):
     return render(request,'premios.html')
