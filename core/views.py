@@ -30,3 +30,6 @@ def vencedores(request):
 
     return render(request,'vencedores.html',{'winners':winners})
 
+def premios(request):
+    return render(request,'premios.html')
+
