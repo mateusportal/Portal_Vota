@@ -30,7 +30,7 @@ def valida_login(request):
     return HttpResponseRedirect('/')   
 
 def votacao(request):
-    if request.session.get('id', False):
+    if request.session.get('id', False) and request.session.get('id') > 0:
         pessoas = Pessoa.objects.filter(ativo='SIM').exclude(pk=request.session.get('id')).order_by('nome')
         return render(request,'votacao.html',{'pessoas':pessoas})
     else:

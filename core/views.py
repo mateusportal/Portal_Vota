@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from pessoas.models import Pessoa, Voto
 from django.db.models import Count
+import itertools
 
 def index(request):
     request.session.flush()
@@ -12,11 +13,17 @@ def obrigado(request):
     return render(request,'obrigado.html')
 
 def vencedores(request):
+    from django.db import connection
+    from django.db.models import Sum, Count
     request.session.flush()
 
-    pessoas = Pessoa.objects.filter(
-    data_cadastro__year=2015, 
-    data_cadastro__month=2).annotate(qtde=Count('votos')).values('destinatario', 'qtde').order_by('-qtde')
+    datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
+    listaVotos = {}
+    for dt in datas:
+        votos = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year).values('destinatario_id').annotate(dcount=Count('id')).order_by('-dcount')[:1]
+        listaVotos = itertools.chain(listaVotos,votos)
 
-    return render(request,'vencedores.html')
+    print list(listaVotos)
+
+    return render(request,'vencedores.html',{'votos':listaVotos})
 

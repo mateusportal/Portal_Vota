@@ -1,41 +1,22 @@
 {% extends "base.html" %} 
 
 {% block container %}
-<div id="main">		
-	<section id="two">
-		<h2>Vencedores dos meses anteriores</h2>
-		<div class="row">
-			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/01.png" class="image fit thumb"><img src="/static/images/thumbs/01.jpg" alt="" /></a>
-				<h3>Fulano de Tal</h3>
-				<p>Janeiro</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/02.jpg" class="image fit thumb"><img src="/static/images/thumbs/02.jpg" alt="" /></a>
-				<h3>Beltrano Souza</h3>
-				<p>Fevereiro</p>
-			</article>
-			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/03.jpg" class="image fit thumb"><img src="/static/images/thumbs/03.jpg" alt="" /></a>
-				<h3>Tor Commodo</h3>
-				<p>Março</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/04.jpg" class="image fit thumb"><img src="/static/images/thumbs/04.jpg" alt="" /></a>
-				<h3>Siclano Ciclo</h3>
-				<p>Abril</p>
-			</article>
-			<article class="6u 12u$(3) work-item">
-				<a href="/static/images/fulls/05.jpg" class="image fit thumb"><img src="/static/images/thumbs/05.jpg" alt="" /></a>
-				<h3>Nelson Piquet</h3>
-				<p>Maio</p>
-			</article>
-			<article class="6u$ 12u$(3) work-item">
-				<a href="/static/images/fulls/06.jpg" class="image fit thumb"><img src="/static/images/thumbs/06.jpg" alt="" /></a>
-				<h3>Rismus Asmos</h3>
-				<p>Junho</p>
-			</article>
-		</div>				
-	</section>
+<div id="main">
+    <!-- Two -->
+    <section id="two">
+        <h2>Vencedores!</h2>
+        <div class="row">
+        {% for voto in votos %}
+            <article class="6u 12u$(3) work-item">
+                <a href="/voto/{{voto.pk}}" class="image fit thumb"><img src="/static/images/{{voto.destinatario.foto}}" alt="Vote em {{ voto.destinatario.nome }}" text="Vote em {{ voto.destinatario.nome }}" /></a>
+                <h3>{{ voto.destinatario.nome }}</h3>
+                <p>{{ voto.destinatario.area }}</p>
+            </article>
+        {% endfor %} 
+        </div>
+        <ul class="actions">
+            <li><a href="#" class="button">Votar</a></li>
+        </ul>
+    </section>  
 </div>
 {% endblock %} 
