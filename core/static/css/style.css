@@ -122,6 +122,11 @@
 			margin: 3em 0;
 		}
 
+	h2 span{
+		color: #49bf9d;
+		
+	}
+
 	blockquote {
 		border-left: solid 6px #efefef;
 		font-style: italic;
