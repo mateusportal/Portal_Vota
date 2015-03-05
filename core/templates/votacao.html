@@ -1,23 +1,17 @@
 {% extends "base.html" %} 
 
 {% block container %}
-<div id="main">
-    <!-- Two -->
-    <section id="two">
-        <h2>Escolha o funcionário do mês.</h2>
-        <div class="row">
-        {% for pessoa in pessoas %}
-            <article class="6u 12u$(3) work-item">
-                <a href="/voto/{{pessoa.pk}}" class="image fit thumb"><img src="/static/images/{{pessoa.foto}}" alt="Vote em {{ pessoa.nome }}" text="Vote em {{ pessoa.nome }}" /></a>
-                <h3>{{ pessoa.nome }}</h3>
-                <p>{{ pessoa.area }}</p>
-            </article>
-        {% endfor %} 
-        </div>
-        <!--<ul class="actions">
-           <li><a href="#" class="button">Votar</a></li>
-        </ul> -->
-    </section>  
-</div>
+<section id="two">
+    <h2>Escolha o funcionário do mês.</h2>
+    <div class="row">
+    {% for pessoa in pessoas %}
+        <article class="6u 12u$(3) work-item">
+            <a href="/voto/{{pessoa.pk}}" class="image fit thumb"><img src="/static/images/{{pessoa.foto}}" alt="Vote em {{ pessoa.nome }}" text="Vote em {{ pessoa.nome }}" /></a>
+            <h3>{{ pessoa.nome }}</h3>
+            <p>{{ pessoa.area }}</p>
+        </article>
+    {% endfor %} 
+    </div>
+</section>  
 {% endblock %} 
 
