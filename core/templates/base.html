@@ -1,19 +1,16 @@
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE HTML>
+<html>
 <head>
     <title>{% block titulo %}{% endblock %}</title>
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=divice-width, initial-scale=1.0">
-    <script language="javascript" src="/static/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.poptrox.min.js"></script>	
-	<script type="text/javascript" src="/static/js/init.js"></script>
-	<script type="text/javascript" src="/static/js/skel.min.js"></script>    
-    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/static/css/skel.css">
-	<link rel="stylesheet" href="/static/css/style.css">	
-	<link rel="stylesheet" href="/static/css/style-xlarge.css">	
-	<link rel="stylesheet" href="/static/css/font-awesome.min.css">	
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Sistema de votação." />
+	<meta name="keywords" content="voto, votação, enquete, portal de ideias, funcionario, colaborador, melhores, dedicação, melhores do mês" />
+
+	<link rel="stylesheet" href="/static/css/skel.css" />
+	<link rel="stylesheet" href="/static/css/style.css" />
+	<link rel="stylesheet" href="/static/css/style-xlarge.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="/static/css/ie/v8.css" /><![endif]-->
 	{% block css %}{% endblock %}
     
 </head>
@@ -30,7 +27,11 @@
 		Sistema para votar no funcionário do mês.</h1> 
 	{% endif %}
 	</header>
-	{% block container %}{% endblock %} 
+
+	<div id="main">
+		{% block container %}{% endblock %}      
+	</div>
+
 	<!-- Footer -->
 	<footer id="footer">
 		<ul class="icons">
@@ -42,6 +43,12 @@
 			<li>Design:&nbsp <a href="http://www.portaldeideias.com.br">Portal de Ideias</a></li><li>&copy; 2015</li>
 		</ul>
 	</footer>
+
+	<!--[if lte IE 8]><script src="/static/css/ie/html5shiv.js"></script><![endif]-->
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/jquery.poptrox.min.js"></script>
+	<script src="/static/js/skel.min.js"></script>
+	<script src="/static/js/init.js"></script>
 	{% block js %}{% endblock %}
 
 	{% if msg %} <!-- MELHORAR A FORMA DE MSG -->
