@@ -2,18 +2,19 @@
 {% block titulo %} Portal Vota - Login {% endblock %}
 
 {% block container %}
-
-<div id="main">
-    <section id="one">
-        <header class="major">
-            <h2>Entre, participe da votação e ganhe prêmios!</h2>
-        </header>
-        <form method="POST" action="/valida_login/">    
-            {% csrf_token %} 
-            <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}"><br />
-            <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}"><br />
-            <input type="submit" value="Login">
-        </form>     
-    </section>      
-</div>
+<section id="one">
+    <header class="major">
+        <h2>Entre, participe da votação e ganhe prêmios!</h2>
+    </header>
+    <form method="POST" action="/valida_login/">    
+        {% csrf_token %} 
+        <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}"><br />
+        <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}"><br />
+        <input type="submit" value="Login">
+    </form>
+    
+    <div style="text-align:center">
+    	<a href="/premios/" class="icon fa-gift">&nbsp&nbspVer prêmios</a>
+    </div>     
+</section> 
 {% endblock %}
