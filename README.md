@@ -7,15 +7,14 @@ Para você instalar este sistema em sua máquina, crie o arquivo de configuraç�
 
 Exemplo de conteúdo do arquivo "settings_conf.py":
 
-# CHAVE = 'r&v-q$@y(6tXI1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#XJ'
+CHAVE = 'r&v-q$@y(6tXI1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#XJ'
 
 Este sistema foi usado como teste para o desenvolvimento de ferramentas para a empresa Portal de Ideias: http://portaldeideias.com.br/
 
 Link para acesso: http://portalvota.herokuapp.com/
 
 # Equipe:
-Edson Lopes
-Tiago Garcia
-Mateus Granero
+
+Edson Lopes, Tiago Garcia, Mateus Granero
 
 
