@@ -8,13 +8,13 @@
     </header>
     <form method="POST" action="/valida_login/">    
         {% csrf_token %} 
-        <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}"><br />
-        <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}"><br />
-        <input type="submit" value="Login">
+        <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}" title="Entre com seu email"><br />
+        <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}" title="Digite sua senha"><br />
+        <input type="submit" value="Login" title="Login">
     </form>
     
     <div style="text-align:center">
-    	<a href="/premios/" class="icon fa-gift">&nbsp&nbspVer prêmios</a>
+    	<a href="/premios/" class="icon fa-gift" title="Ver Prêmios">&nbsp&nbspVer prêmios</a>
     </div>     
 </section> 
 {% endblock %}
