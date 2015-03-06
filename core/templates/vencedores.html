@@ -3,15 +3,20 @@
 {% block container %}
 <section id="two">
     <h1>Vencedores!</h1>
-    <div class="row">
+   
         {% for winner in winners %}
 
         {% if forloop.first %}
-        <article class="6u 12u$(3) work-item">
-            <h2>Parcial deste mês: <br />Ano: <span>{{ winner.data_cadastro|date:"Y" }}</span> <br />Mês:<span> {{ winner.data_cadastro|date:"F" }}</span></h2>
-            <img src="/static/images/{{ winner.destinatario__foto }}" class="image fit thumb" style="border:solid 4px #49bf9d;"/>
-            <h3>Parabéns {{ winner.destinatario__nome }}</h3>
+    <div class="row">
+        <article class="6u 12u$(3) work-item">            
+            <img src="/static/images/{{ winner.destinatario__foto }}" class="image fit thumb" style="border:solid 4px #49bf9d;"/>            
         </article>
+        <article class="6u 12u$(3) work-item">    
+            <h2>Resultado parcial de {{ winner.data_cadastro|date:"F" }}:<br /> <span>{{ winner.destinatario__nome }}</span><br />
+            Ano: <span>{{ winner.data_cadastro|date:"Y" }}</span></h2>           
+        </article>
+    </div>
+     <div class="row">    
         {% else %}
         <article class="6u 12u$(3) work-item">
             <h1>Ano {{ winner.data_cadastro|date:"Y" }} mês {{ winner.data_cadastro|date:"F" }}</h1>
