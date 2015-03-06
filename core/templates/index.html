@@ -8,8 +8,8 @@
     </header>
     <form method="POST" action="/valida_login/">    
         {% csrf_token %} 
-        <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}" title="Entre com seu email"><br />
-        <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}" title="Digite sua senha"><br />
+        <input type="email" name="email" placeholder="E-mail portal" id="email" value="{{ email|default:'' }}" title="Entre com seu email" required><br />
+        <input type="password" name="cpf" placeholder="Digite seu Cpf" id="cpf" value="{{ cpf|default:'' }}" title="Digite sua senha" required><br />
         <input type="submit" value="Login" title="Login">
     </form>
     
