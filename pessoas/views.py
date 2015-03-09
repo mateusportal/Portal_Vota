@@ -46,6 +46,9 @@ def votar(request, codigo):
         validacao = False
     elif codigo <= 0:
         validacao = False
+    elif not request.session['id']:
+        validacao = False
+
 
     if validacao:
         data = date.today()
@@ -63,3 +66,8 @@ def votar(request, codigo):
     else:
         request.session.flush()
         return HttpResponseRedirect('/')
+
+
+
+
+
