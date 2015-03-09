@@ -46,7 +46,11 @@ def votar(request, codigo):
         validacao = False
     elif codigo <= 0:
         validacao = False
-    elif not request.session['id']:
+
+    try:
+        if request.session['id']:
+            print "Usuario Validado"    
+    except:
         validacao = False
 
 
