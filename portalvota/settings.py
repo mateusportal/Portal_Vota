@@ -1,25 +1,18 @@
 # coding: utf-8
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from dj_database_url import parse as db_url
+from unipath import Path
+from settings_conf import *
 import os
 import dj_database_url
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r&v-q$@y(6tot1=7j#uq3+r9$qg6$3bdloya61y8iazvy0a#zg'
+SECRET_KEY = CHAVE
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -32,7 +25,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'core',
     'pessoas',
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,10 +43,20 @@ WSGI_APPLICATION = 'portalvota.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+# Para ligar o servidor Heroku local executar o comando abaixo:
+# foreman start
+
+# Adicionando variavel de ambiente no Heroku para funcionar o PRODUCTION in os.environ
+# Rodar no CMD: heroku config:add PRODUCTION=1
+
 
 if 'PRODUCTION' in os.environ:
+    DEBUG = False
+    TEMPLATE_DEBUG = False
     DATABASES = { 'default': dj_database_url.config() }
 else:
+    DEBUG = True
+    TEMPLATE_DEBUG = True
     DATABASES = { 'default': {
     'ENGINE': 'django.db.backends.sqlite3',
     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),}
@@ -64,6 +66,7 @@ else:
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
+
 
 TIME_ZONE = 'UTC'
 
@@ -77,7 +80,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+)
+
 STATIC_ROOT = 'staticfiles'
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

@@ -1,15 +1,35 @@
 # coding: utf-8
 from django.shortcuts import render
 from pessoas.models import Pessoa, Voto
+from django.db.models import Count
+import itertools
 
 def index(request):
-    versao = '0.1'
-    return render(request,'index.html',{'versao':versao})
+    request.session.flush()
+    return render(request,'index.html')
 
-def login(request):
+def obrigado(request):
+    request.session.flush()
+    return render(request,'obrigado.html')
 
-    email = request.POST.get('email','SEM EMAIL')
+def vencedores(request):
+    from django.db import connection
+    from django.db.models import Sum, Count
+    request.session.flush()
 
-    print email
-    #pessoa = Pessoa.objects.get(email=, cpf=)
-    return render(request,'votacao.html',{'nome':email})
+    datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
+    winners = []
+    for dt in datas:
+        voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
+                    .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
+                    .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
+
+        winners.append(voto[0])
+
+    print list(winners)
+
+    return render(request,'vencedores.html',{'winners':winners})
+
+def premios(request):
+    return render(request,'premios.html')
+

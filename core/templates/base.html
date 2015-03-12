@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block titulo %}{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Sistema de votação." />
+	<meta name="keywords" content="voto, votação, enquete, portal de ideias, funcionario, colaborador, melhores, dedicação, melhores do mês" />
+
+	<link rel="stylesheet" href="/static/css/skel.css" />
+	<link rel="stylesheet" href="/static/css/style.css" />
+	<link rel="stylesheet" href="/static/css/style-xlarge.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="/static/css/ie/v8.css" /><![endif]-->
+
+	<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+	{% block css %}{% endblock %}
+    
+</head>
+<body id="top">
+	<header id="header">
+	{% if request.session.id %}
+		<img class="image avatar"  src="/static/images/{{ request.session.foto }}" alt="Olá {{ request.session.nome }}!" />
+		<h1>Olá {{ request.session.nome }}!<br />
+		{{ request.session.area }}
+		</h1> 
+	{% else %} 
+		<a href="#" class="image avatar"><img src="/static/images/logo.jpg" alt="" /></a>
+		<h1><strong>Portal Vota</strong><br />
+		Sistema para votar no funcionário do mês.</h1> 
+	{% endif %}
+	</header>
+
+	<div id="main">
+		{% block container %}{% endblock %}      
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="icons">
+			<li><a href="https://www.youtube.com/watch?v=bbj35kDiQvQ" alt="Video de desenvolvimento" title="Video de desenvolvimento"><span class="icon fa-youtube"></span></a></li>
+			<li><a href="https://play.google.com/store/apps/details?id=appinventor.ai_edsonlb.PortalVota" title="Google Play"target="blank"><span class="icon fa-android"></span></a></li>
+			<li><a href="https://github.com/tiagoportal/Portal_Vota" title="Veja o projeto no Github" target="blank"><span class="icon fa-github"></span></a></li>
+			<li><a href="https://www.facebook.com/portal.deideias?fref=ts" title="Nossa página no facebook" target="blank"><span class="icon fa-facebook"></span></a></li>			
+			<li><a href="contato@portaldeideias.com.br" title="Contato@portaldeideias.com.br"><span class="icon fa-envelope-o"></span></a></li>
+			<li><a href="/premios/" alt="Ver Premios" title="Ver Prêmios"><span class="icon fa-gift"></span></a></li>
+			<li><a href="/vencedores/" alt="Ver vencedores" title="Ver vencedores"><span class="icon fa-trophy"></span></a></li>
+			<li><a href="/valida_login/" alt="login" title="home"><span class="icon fa-home"></span></a></li>
+		</ul>
+		<ul class="copyright">			
+			<li>Design:&nbsp <a href="http://www.portaldeideias.com.br">Portal de Ideias</a></li><li>&copy; 2015</li>
+		</ul>
+	</footer>
+
+	<!--[if lte IE 8]><script src="/static/css/ie/html5shiv.js"></script><![endif]-->
+	<script src="/static/js/jquery.min.js"></script>	
+	<script src="/static/js/skel.min.js"></script>
+	<script src="/static/js/init.js"></script>
+	{% block js %}{% endblock %}
+
+	{% if msg %} <!-- MELHORAR A FORMA DE MSG -->
+	<script>
+    	alert("AVISO: {{ msg }}");
+  	</script>
+	{% endif %}
+
+</body>
+</html>
