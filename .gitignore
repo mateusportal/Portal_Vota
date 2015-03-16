@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *.sqlite3
+*.mp4
 settings_conf.py
 
 # C extensions

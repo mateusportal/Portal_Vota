@@ -58,7 +58,7 @@ def votar(request, codigo):
         data = date.today()
 
         try:
-            votos = Voto.objects.get(remetente_id=request.session['id'], data_cadastro__month=data.month) 
+            votos = Voto.objects.get(remetente_id=request.session['id'], data_cadastro__month=data.month)
             votos.destinatario_id = codigo
             votos.save()
         except:
