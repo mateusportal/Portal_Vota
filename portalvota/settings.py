@@ -2,12 +2,9 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from dj_database_url import parse as db_url
 from unipath import Path
-from settings_conf import *
 import os
 import dj_database_url
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-SECRET_KEY = CHAVE
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -51,10 +48,13 @@ WSGI_APPLICATION = 'portalvota.wsgi.application'
 
 
 if 'PRODUCTION' in os.environ:
+    SECRET_KEY = os.environ.get('CHAVE')
     DEBUG = False
     TEMPLATE_DEBUG = False
     DATABASES = { 'default': dj_database_url.config() }
 else:
+    from settings_conf import *
+    SECRET_KEY = CHAVE
     DEBUG = True
     TEMPLATE_DEBUG = True
     DATABASES = { 'default': {
