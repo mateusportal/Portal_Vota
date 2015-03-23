@@ -2,7 +2,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.db.models import Q
 from pessoas.models import Pessoa, Voto
-from datetime import date
+from datetime import date, datetime
 
 def valida_login(request):
     request.session.flush()
@@ -65,6 +65,7 @@ def votar(request, codigo):
         try:
             votos = Voto.objects.get(remetente_id=request.session['id'], data_cadastro__month=data.month)
             votos.destinatario_id = codigo
+            votos.data_cadastro = datetime.now()
             votos.save()
         except:
             votos = Voto(remetente_id=request.session['id'], destinatario_id=codigo)
