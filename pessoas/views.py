@@ -49,7 +49,12 @@ def votar(request, codigo):
 
     try:
         if request.session['id']:
-            print "Usuario Validado"    
+            print "Usuario Validado"
+
+        if str(request.session.get('id')) == str(codigo):
+            print "Usuario Zuado"
+            validacao = False
+ 
     except:
         validacao = False
 
