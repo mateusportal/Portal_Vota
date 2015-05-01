@@ -21,16 +21,13 @@ def vencedores(request):
     winners = []
     for dt in datas:
         voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
-        .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
-        .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
-
-        print Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
-        .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
-        .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1].query
+        .annotate(dcount=Count('destinatario__pk'))\
+        .values('destinatario__pk', 'destinatario__nome', 'destinatario__foto')\
+        .order_by('-dcount')[:1]
 
         winners.append(voto[0])
 
-    print list(winners)
+    #print list(winners)
 
     return render(request,'vencedores.html',{'winners':winners})
 
