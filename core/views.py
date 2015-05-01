@@ -20,8 +20,8 @@ def vencedores(request):
     datas = Voto.objects.all().datetimes('data_cadastro','month',order='DESC')
     winners = []
     for dt in datas:
-        voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)
-        .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')
+        voto = Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
+        .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
         .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
 
         winners.append(voto[0])
