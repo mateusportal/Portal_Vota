@@ -26,7 +26,7 @@ def vencedores(request):
 
         print Voto.objects.filter(data_cadastro__month=dt.month, data_cadastro__year=dt.year)\
         .values('destinatario__pk', 'data_cadastro', 'destinatario__nome', 'destinatario__foto')\
-        .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1]
+        .annotate(dcount=Count('destinatario__pk')).order_by('-dcount')[:1].query
 
         winners.append(voto[0])
 
