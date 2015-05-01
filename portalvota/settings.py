@@ -48,8 +48,8 @@ WSGI_APPLICATION = 'portalvota.wsgi.application'
 
 if 'PRODUCTION' in os.environ:
     SECRET_KEY = os.environ.get('CHAVE')
-    DEBUG = False
-    TEMPLATE_DEBUG = False
+    DEBUG = True
+    TEMPLATE_DEBUG = True
     DATABASES = { 'default': dj_database_url.config() }
 else:
     from settings_conf import *
